@@ -30,12 +30,13 @@ void setTodoFromLocal ()async{
     notifyListeners();
   }
 
-  void addTask() async{
-    int length = todolist.length;
-    todolist.add({"task_name": "task ${++length}"});
-    await LocalStorage().setTodo(todolist);
-    todolist =await  LocalStorage().getTodo();
-    notifyListeners();
-  }
-
+  void addTask(String taskName, String status) async {
+  print("Add task");
+  todolist.add({
+    "task_name": taskName,
+    "status": status, 
+  });
+  await LocalStorage().setTodo(todolist);
+  notifyListeners();
+}
 }

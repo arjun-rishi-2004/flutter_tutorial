@@ -1,9 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/firebase_options.dart';
 import 'package:flutter_application_1/view_modal/todoviewmodel.dart';
 import 'package:flutter_application_1/views/home_screen.dart';
+import 'package:flutter_application_1/views/login_screen.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+Future<void> main() async {  
+  await Firebase.initializeApp( 
+    options: DefaultFirebaseOptions.web
+  );
+
   runApp(const MyApp());
 }
 
@@ -39,7 +46,7 @@ class MyApp extends StatelessWidget {
           // tested with just a hot reload.
           colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 0, 0, 0)),
         ),
-        home: const HomeScreen(email: "a"),
+        home:  LoginScreen(),
       ),
     );
   }
